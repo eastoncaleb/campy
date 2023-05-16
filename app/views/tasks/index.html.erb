@@ -4,16 +4,18 @@
   </p>
 <% end %>
 
-<h1 class="font-bold text-2xl">Task Manager</h1>
+<h1 class="font-bold text-2xl xl:text-3xl mb-4 text-center text-denim-900">Tasks</h1>
 
-<div class="mt-4">
-  <%= render "form" %>
-</div>
+<div class="flex flex-wrap lg:flex-nowrap w-full justify-center">
+	<div class="mr-0 lg:mr-4 lg:-mt-3">
+		<%= render "form", task: @task %>
+	</div>
 
-<div id="tasks">
-  <h1 class="font-bold text-lg mb-7">Tasks</h1>
+	<div id="tasks" data-controller="tasks" class="mt-4 lg:mt-0 bg-blue-100/40 rounded-lg p-4">
+		<h1 class="font-bold text-lg text-denim-800">Created Tasks</h1>
 
-  <div class="px-5">
-    <%= render tasks %>
-  </div>
+		<div class="px-5">
+			<%= render tasks %>
+		</div>
+	</div>
 </div>
