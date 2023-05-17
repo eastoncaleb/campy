@@ -1,11 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    connect() {
-        console.log(this.element)
-    }
+		connect() {
+			this.timerId = 0;
+		}
 
 		toggle(e) {
+			const alert = document.querySelector("#toast-simple");
 			const id = e.target.dataset.id
 			const csrfToken = document.querySelector("[name='csrf-token']").content
 
@@ -20,9 +21,32 @@ export default class extends Controller {
 					},
 					body: JSON.stringify({ completed: e.target.checked }) // body data type must match "Content-Type" header
 			})
-				.then(response => response.json())
-				.then(data => {
-					 alert(data.message)
-				 })
+			.then(response => response.json())
+			.then(data => {
+				clearTimeout(this.timerId);
+				
+				this.timerId = setTimeout(function(){
+					alert.classList.add("hidden")
+				}, 3000);
+
+				if(data.status == "Success") {
+					alert.querySelector("#message").innerHTML = data.message;
+					alert.querySelector("#icon").classList.add("fa-regular", "fa-thumbs-up");
+					alert.classList.add("bg-green-500")
+					alert.classList.remove("hidden");
+					this._extendTimer(() => alert.classList.add("hidden"), this.timerId, 5000)
+				} else {
+					alert.querySelector("#message").innerHTML = data.message;
+					alert.querySelector("#icon").classList.add("fa-regular", "fa-thumbs-down");
+					alert.classList.add("bg-red-500")
+					alert.classList.remove("hidden");
+				}
+		})
+	}
+
+	_extendTimer(fn, id, time) {
+		clearTimeout(id);
+		var id = setTimeout(fn, time);
+		this.timerId = id
 	}
 }
