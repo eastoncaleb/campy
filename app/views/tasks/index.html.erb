@@ -1,17 +1,17 @@
 <% if notice.present? %>
-  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
+  <p class="text-center flex py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg justify-center" id="notice">
     <%= notice %>
   </p>
 <% end %>
 
-<h1 class="font-bold text-2xl xl:text-3xl mb-4 text-center text-denim-900">Tasks</h1>
+<h1 class="font-bold text-2xl xl:text-3xl mb-4 text-center text-denim-900 bg-denim-100/40 py-2 rounded-lg">Tasks</h1>
 
-<div class="flex flex-wrap lg:flex-nowrap w-full justify-center">
+<div class="flex flex-wrap lg:flex-nowrap w-full justify-center my-4">
 	<div class="mr-0 lg:mr-4 lg:-mt-3">
 		<%= render "form", task: @task %>
 	</div>
 
-	<div id="tasks" data-controller="tasks" class="mt-4 lg:mt-0 bg-blue-100/40 rounded-lg p-4">
+	<div id="tasks" data-controller="tasks" class="mt-4 lg:mt-0 bg-denim-700/20 rounded-lg p-4">
 		<h1 class="font-bold text-lg text-denim-800">Created Tasks</h1>
 
 		<div class="px-5">
@@ -19,3 +19,5 @@
 		</div>
 	</div>
 </div>
+
+<h1 class="font-bold text-2xl xl:text-3xl mb-4 text-center text-denim-900 bg-denim-100/40 py-2 rounded-lg">Projects</h1>
