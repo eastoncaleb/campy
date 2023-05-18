@@ -9,12 +9,12 @@
     <span class="font-semibold text-denim-800"><%= task.description %></span>
   <% end %>
 	<%= link_to "Edit", edit_task_path(task),
-              class: "btn bg-denim-800 text-white hover:bg-denim-900"
+              class: "btn bg-denim-800 text-white hover:bg-denim-900 text-sm"
   %>
   <div class="inline-block ml-2">
     <%= button_to "Delete", task_path(task),
                   method: :delete,
-                  class: "btn bg-red-600/80 text-white hover:bg-red-600",
+                  class: "btn bg-red-600/80 text-white hover:bg-red-600 text-sm",
 									data: { "turbo-frame": "_top" } %>
   </div>
 </turbo-frame>

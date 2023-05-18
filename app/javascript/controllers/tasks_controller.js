@@ -32,15 +32,14 @@ export default class extends Controller {
 				if(data.status == "Success") {
 					alert.querySelector("#message").innerHTML = data.message;
 					alert.querySelector("#icon").classList.add("fa-regular", "fa-thumbs-up");
-					alert.classList.add("bg-green-500")
-					alert.classList.remove("hidden");
-					this._extendTimer(() => alert.classList.add("hidden"), this.timerId, 5000)
+					alert.classList.add("bg-green-500/90")
 				} else {
 					alert.querySelector("#message").innerHTML = data.message;
 					alert.querySelector("#icon").classList.add("fa-regular", "fa-thumbs-down");
-					alert.classList.add("bg-red-500")
-					alert.classList.remove("hidden");
+					alert.classList.add("bg-red-500/90")
 				}
+				alert.classList.remove("hidden");
+				this._extendTimer(() => alert.classList.add("hidden"), this.timerId, 3000)
 		})
 	}
 
