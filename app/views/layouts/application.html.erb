@@ -13,17 +13,19 @@
 
   <body>
     <main class="">
-      <div class="bg-gray-100 w-full shadow-md">
+      <div class="flex justify-around bg-gray-100 w-full shadow-md items-center mb-4">
+        <div>
         <%= link_to tasks_path do %>
-          <h1 class="text-2xl xl:text-4xl p-4 mb-4 font-bold text-denim-900">campy <i class="fa-solid fa-campground"></i></h1>
+          <h1 class="text-2xl xl:text-4xl p-4 font-bold text-denim-900">campy <i class="fa-solid fa-campground"></i></h1>
         <% end %>
+        </div>
+        <div class="mx-8 font-bold text-denim-900">
+          <%= link_to "tasks", tasks_path, class: "mx-2 hover:border-b-4 hover:border-denim-800 hover:text-denim-800" %>
+          <%= link_to "projects", projects_path, class: "mx-2 hover:border-b-4 hover:border-denim-800 hover:text-denim-800" %>
+        </div>
       </div>
 
-      <% if notice.present? %>
-        <p class="text-center flex py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg justify-center" id="notice">
-          <%= notice %>
-        </p>
-      <% end %>
+      <%= render partial: "shared/flash" %>
 
       <div class="p-4">
         <%= render 'shared/toast' %>

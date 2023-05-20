@@ -14,7 +14,7 @@ class TasksController < ApplicationController
 		@task = Task.new(task_params)
 
 		if @task.save
-			redirect_to tasks_url, notice: "Task was successfully created"
+			redirect_to tasks_url, notice: "Task was successfully created!"	
 		else
 			render :new, status: :unprocessable_entity
 		end
@@ -24,6 +24,9 @@ class TasksController < ApplicationController
 		respond_to do |format|
 			if task.update(task_params)
 				format.html { redirect_to tasks_url, notice: "Task was successfully updated" }
+				format.turbo_stream do
+					flash.now[:notice] = "Task was successfully updated!"
+				end
 			else
 				format.html { render :edit, status: :unprocessable_entity }
 			end
@@ -37,16 +40,25 @@ class TasksController < ApplicationController
 
 	def toggle
 		@task = Task.find(params[:id])
-		if @task.update(completed: params[:completed])
-			render json: {
-				status: "Success",
-				message: "Task Successfully Updated" 
-			}
-		else
-			render json: {
-				status: "Failure",
-				message: "Task Couldn't Be Updated!" 
-			}
+		
+		respond_to do |format|
+			format.json do
+				if @task.update(completed: params[:completed])
+					render json: {
+						status: "Success",
+						message: "Task Successfully Updated" 
+					}
+				else
+					render json: {
+						status: "Failure",
+						message: "Task Couldn't Be Updated!" 
+					}
+				end
+			end
+			format.turbo_stream do
+				flash.now[:notice] = "Task was updated!"
+				turbo_stream.replace "notice", partial: "shared/flash"
+			end
 		end
 	end
 
