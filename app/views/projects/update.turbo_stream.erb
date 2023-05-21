@@ -1,0 +1,4 @@
+<%= turbo_stream.replace "#{dom_id(@project)}" do %>
+	<%= render @project %>
+<% end %>
+<%= turbo_stream.replace "notice", partial: "shared/flash" %>

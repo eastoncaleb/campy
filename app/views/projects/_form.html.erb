@@ -1,6 +1,7 @@
 <%= form_with(model: @project, class: "flex w-full") do |form| %>
   <div class="w-full flex flex-wrap items-center">
-    <%= form.text_field :description, placeholder: "Add new project", class: "flex-grow inline-block px-3 py-2 shadow rounded-md border border-gray-200 outline-none" %>
+    <%= form.text_field :name, placeholder: "Project name", class: "flex-grow inline-block px-3 py-2 shadow rounded-md border border-gray-200 outline-none mx-1" %>
+    <%= form.text_field :description, placeholder: "Project description", class: "flex-grow inline-block px-3 py-2 shadow rounded-md border border-gray-200 outline-none mx-1" %>
     <%= form.submit "Save", class: "btn py-2 ml-2 bg-denim-600 text-white hover:bg-denim-700" %>
   </div>
 <% end %>

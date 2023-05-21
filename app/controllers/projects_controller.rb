@@ -16,14 +16,17 @@ class ProjectsController < ApplicationController
 		if @project.save
 			redirect_to projects_url, notice: "Project was successfully created"
 		else
-			render :new, status: :unprocessable_entity
+			redirect_to projects_url, notice: @project.errors.full_messages
 		end
 	end
 
-	def update
+  def update
 		respond_to do |format|
 			if project.update(project_params)
 				format.html { redirect_to projects_url, notice: "Project was successfully updated" }
+				format.turbo_stream do
+					flash.now[:notice] = "Project was successfully updated!"
+				end
 			else
 				format.html { render :edit, status: :unprocessable_entity }
 			end
@@ -53,7 +56,7 @@ class ProjectsController < ApplicationController
 	private
 
 	def project_params
-		params.require(:project).permit(:description)
+		params.require(:project).permit(:name, :description)
 	end
 
 	def projects
