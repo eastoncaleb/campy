@@ -1,6 +1,4 @@
 <%= turbo_stream.replace "#{dom_id(@task)}" do %>
 	<%= render @task %>
 <% end %>
-<%= turbo_stream.prepend "#{dom_id(@task)}" do %>
-	<%= render "shared/toast_icon_only", icon: "fas fa-thumbs-up", color: "bg-green-500", classes: "mr-2 text-sm" %>
-<% end %>
+<%= turbo_stream.replace "notice", partial: "shared/flash" %>

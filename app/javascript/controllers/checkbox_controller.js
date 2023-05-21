@@ -8,9 +8,10 @@ export default class extends Controller {
 		toggle(e) {
 			const alert = document.querySelector("#toast-simple");
 			const id = e.target.dataset.id
+			const type = e.target.dataset.type
 			const csrfToken = document.querySelector("[name='csrf-token']").content
 
-			fetch(`/tasks/${id}/toggle`, {
+			fetch(`/${type}/${id}/toggle`, {
 					method: 'POST', // *GET, POST, PUT, DELETE, etc.
 					mode: 'cors', // no-cors, *cors, same-origin
 					cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
