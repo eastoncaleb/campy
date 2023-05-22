@@ -1,7 +1,7 @@
 <div id="notice" data-controller="flash">
   <% if notice.present? %>
     <div class="mx-auto md:w-2/3 w-full flex">
-      <p class="mx-auto py-2 px-3 font-semibold bg-denim-800 text-white rounded-lg inline-block">
+      <p class="mx-auto py-2 px-3 font-semibold bg-denim-800 border-denim-600 border-2 text-white rounded-lg inline-block">
       <% if notice.kind_of?(Array) %>
         <% notice.each do |e| %>
           - <%= e %><br />
