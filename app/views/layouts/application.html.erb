@@ -19,9 +19,12 @@
           <h1 class="text-2xl xl:text-4xl p-4 font-bold text-denim-900">campy <i class="fa-solid fa-campground"></i></h1>
         <% end %>
         </div>
-        <div class="mx-8 font-bold text-denim-900">
-          <%= link_to "tasks", tasks_path, class: "mx-2 hover:border-b-4 hover:border-denim-800 hover:text-denim-800" %>
-          <%= link_to "projects", projects_path, class: "mx-2 hover:border-b-4 hover:border-denim-800 hover:text-denim-800" %>
+        <div class="mx-8 flex font-bold text-denim-900">
+          <%= link_to "tasks", tasks_path, class: "mx-2 border-b-4 border-gray-100 hover:border-denim-800 hover:text-denim-800" %>
+          <%= link_to "projects", projects_path, class: "mx-2 border-b-4 border-gray-100 hover:border-denim-800 hover:text-denim-800" %>
+          <% if user_signed_in? %>
+            <%= button_to "logout", destroy_user_session_path, method: :delete, class: "ml-4 mr-2 border-b-4 border-gray-100 hover:border-denim-600 text-denim-600" %>
+          <% end %>
         </div>
       </div>
 

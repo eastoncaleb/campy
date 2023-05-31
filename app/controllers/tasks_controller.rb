@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
 	helper_method :tasks
+	before_action :authenticate_user!
 	before_action :task, except: %i[new create index]
 
 	def index

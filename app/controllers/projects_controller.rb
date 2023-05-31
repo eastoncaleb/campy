@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   helper_method :projects
+	before_action :authenticate_user!
 	before_action :project, except: %i[new create index]
 
 	def index
