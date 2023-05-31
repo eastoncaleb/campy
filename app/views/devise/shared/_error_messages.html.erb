@@ -1,5 +1,5 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" data-turbo-cache="false">
+  <div class="mx-auto py-2 px-3 font-semibold bg-denim-800 border-denim-600 border-2 text-white rounded-lg inline-block mb-4" id="error_explanation" data-turbo-cache="false">
     <h2>
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
@@ -13,3 +13,4 @@
     </ul>
   </div>
 <% end %>
+

@@ -1,10 +1,10 @@
-<div class="flex justify-center flex-wrap">
+<div class="flex justify-center flex-wrap text-gray-600">
   <h2 class="text-denim-900 font-bold text-xl md:text-2xl lg:text-3xl mb-4 w-full text-center">Log In</h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
     <div class="field mb-2">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-denim-100/50 border-2 border-denim-500 rounded shadow" %>
     </div>
 
     <div class="field mb-2">

@@ -11,5 +11,13 @@
       <% end %>
       </p>
     </div>
+  <% elsif flash.any? %>
+    <% flash.each do |type, message| %>
+      <div class="mx-auto md:w-2/3 w-full flex">
+        <p class="mx-auto py-2 px-3 font-semibold bg-denim-800 border-denim-600 border-2 text-white rounded-lg inline-block">
+          <%= message %>
+        </p>
+      </div>
+    <% end %>
   <% end %>
 </div>
