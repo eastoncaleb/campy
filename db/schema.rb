@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_213426) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_000033) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -20,6 +23,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_213426) do
     t.boolean "completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "creator_id", null: false
+    t.bigint "assignee_id"
+    t.index ["assignee_id"], name: "index_projects_on_assignee_id"
+    t.index ["creator_id"], name: "index_projects_on_creator_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -27,7 +34,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_213426) do
     t.boolean "completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "project_id"
+    t.bigint "project_id"
+    t.bigint "creator_id", null: false
+    t.bigint "assignee_id"
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
+    t.index ["creator_id"], name: "index_tasks_on_creator_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
@@ -43,4 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_213426) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "projects", "users", column: "assignee_id"
+  add_foreign_key "projects", "users", column: "creator_id"
+  add_foreign_key "tasks", "users", column: "assignee_id"
+  add_foreign_key "tasks", "users", column: "creator_id"
 end

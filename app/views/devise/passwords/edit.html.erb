@@ -1,27 +1,27 @@
 <div class="flex justify-center flex-wrap text-gray-600">
   <h2 class="text-denim-900 font-bold text-xl md:text-2xl lg:text-3xl mb-4 w-full text-center">Change your password</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
 
-  <div class="field mb-2 w-full">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+    <div class="field mb-2 w-full">
+      <%= f.label :password, "New password" %><br />
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <% end %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field mb-2 w-full">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field mb-2 w-full">
+      <%= f.label :password_confirmation, "Confirm new password" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="actions my-4 text-center">
-    <%= f.submit "Change my password", class: "bg-denim-800 text-white px-4 py-2 hover:bg-denim-700 cursor-pointer" %>
-  </div>
-<% end %>
+    <div class="actions my-4 text-center">
+      <%= f.submit "Change my password", class: "bg-denim-800 text-white px-4 py-2 hover:bg-denim-700 cursor-pointer" %>
+    </div>
+  <% end %>
 
   <div class="w-full flex text-center justify-center">
     <%= render "devise/shared/links" %>
