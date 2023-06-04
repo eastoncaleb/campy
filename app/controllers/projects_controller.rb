@@ -8,16 +8,16 @@ class ProjectsController < ApplicationController
 	end
 
 	def new
-		@project = Project.new
+		@project = Project.new(project_params)
 	end
 
 	def create
-		@project = Project.new(project_params)
+		@project = current_user.projects.new(project_params)
 
 		if @project.save
-			redirect_to projects_url, notice: "Project was successfully created"
+			flash.now[:notice] = "Project successfully created!"
 		else
-			redirect_to projects_url, notice: @project.errors.full_messages
+			flash.now[:notice] = "Project couldn't be created!"
 		end
 	end
 

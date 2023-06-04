@@ -1,4 +1,4 @@
-<turbo-frame id="<%= dom_id task %>" class="flex justify-between items-center my-4 py-2 px-4 bg-denim-500/10 rounded-lg">
+<turbo-frame id="<%= dom_id task %>" class="flex justify-between items-center my-4 py-2 px-4 bg-denim-400/10 rounded-lg text-denim-900 shadow-md shadow-denim-200/50 border-b border-denim-100">
   <%= link_to task do %>
     <%= form_with(model: task, class:"text-lg inline-block flex-grow") do |form| %>
       <%= form.check_box :completed,
