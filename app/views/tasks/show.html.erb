@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(@task) do %>
-	<div class="w-full flex justify-between items-center p-10 text-denim-900">
+	<div class="w-full flex justify-between items-center p-6 text-denim-900 bg-white/80 shadow-md rounded-lg m-2">
 		<div class="grid grid-cols-2 gap-4 w-full">
 			<p><span class="font-semibold">Description:</span> <%= @task.description %></p>
 			<p><span class="font-semibold">Created by:</span> <%= @task.creator.email %></p>

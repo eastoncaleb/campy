@@ -7,6 +7,8 @@ class ProjectsController < ApplicationController
 		@project = Project.new
 	end
 
+	def show; end
+
 	def new
 		@project = Project.new(project_params)
 	end

@@ -1,9 +1,9 @@
 <%= turbo_frame_tag "#{dom_id(@project)}-form" do %>
 	<%= form_with(model: @project, class: "flex w-full", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset"}) do |form| %>
 		<div class="w-full flex flex-wrap items-center justify-center">
-			<div class="flex flex-wrap items-start w-full md:w-1/2 justify-center">
-				<%= form.text_field :name, placeholder: "Project name", class: "w-full inline-block px-3 py-2 shadow rounded-md border border-gray-200 outline-none mx-1 my-1", data: { "reset-form-target": "required" } %>
-				<%= form.text_area :description, size: "30x5", placeholder: "Project description", class: "w-full inline-block px-3 py-2 shadow rounded-md border border-gray-200 outline-none mx-1 my-1", data: { "reset-form-target": "required" } %>
+			<div class="flex flex-wrap items-start w-full md:w-3/4 lg:w-1/2 justify-center">
+				<%= form.text_field :name, placeholder: "Project name", class: "w-full inline-block px-3 py-2 shadow rounded-md border border-gray-200 outline-none mx-1 my-1 mb-4", data: { "reset-form-target": "required" } %>
+				<%= form.rich_text_area :description, size: "30x5", placeholder: "Project description", class: "w-full inline-block px-3 py-2 shadow rounded-md border border-gray-200 outline-none mx-1 my-1", data: { "reset-form-target": "required" } %>
 			</div>
 			<div class="flex flex-wrap w-full justify-center items-center my-3">
 			<%= form.label "start date", class: "mr-1 text-gray-500" %>

@@ -1,23 +1,23 @@
 <turbo-frame id="<%= dom_id task %>" class="flex justify-between items-center my-4 py-2 px-4 bg-denim-400/10 rounded-lg text-denim-900 shadow-md shadow-denim-200/50 border-b border-denim-100">
-  <%= link_to task do %>
-    <%= form_with(model: task, class:"text-lg inline-block flex-grow") do |form| %>
-      <%= form.check_box :completed,
-                        data: {
-                          id: task.id,
-                          type: "tasks",
-                          action: "checkbox#toggle"
-                        },
-                        class: "mr-2 align-middle bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-5 w-5 rounded checked:bg-green-500" %>
-      <span class="font-semibold text-denim-800"><%= task.description %></span>
-    <% end %>
-    <div class="flex">
-      <%= link_to "Edit", edit_task_path(task),
-                  class: "btn bg-denim-800 text-white hover:bg-denim-900 text-sm mr-1"
-      %>
-      <%= button_to "Delete", task_path(task),
-                    method: :delete,
-                    class: "btn bg-red-600/80 text-white hover:bg-red-600 text-sm",
-                    data: { "turbo-frame": "_top" } %>
-    </div>
+  <%= form_with(model: task, class:"text-lg inline-block") do |form| %>
+    <%= form.check_box :completed,
+                      data: {
+                        id: task.id,
+                        type: "tasks",
+                        action: "checkbox#toggle"
+                      },
+                      class: "mr-2 align-middle bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-5 w-5 rounded checked:bg-green-500" %>
   <% end %>
+  <%= link_to task, class: "flex-grow mx-4" do %>
+    <span class="font-semibold text-denim-800"><%= task.name %></span>
+  <% end %>
+  <div class="flex">
+    <%= link_to "Edit", edit_task_path(task),
+                class: "btn bg-denim-800 text-white hover:bg-denim-900 text-sm mr-1"
+    %>
+    <%= button_to "Delete", task_path(task),
+                  method: :delete,
+                  class: "btn bg-red-600/80 text-white hover:bg-red-600 text-sm",
+                  data: { "turbo-frame": "_top" } %>
+  </div>
 </turbo-frame>

@@ -7,7 +7,7 @@
 				<%= render "form", project: @project %>
 			</div>
 
-			<%= turbo_frame_tag "projects_list", class: "flex-grow mt-4" do %>
+			<%= turbo_frame_tag "projects_list", class: "mt-4 w-full md:w-3/4 lg:w-1/2" do %>
 				<%= render "projects" %>
 			<% end %>
 		</div>
