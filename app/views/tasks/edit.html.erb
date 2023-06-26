@@ -1,4 +1,4 @@
-<turbo-frame id="<%= dom_id @task %>">
+<turbo-frame id="<%= dom_id @task %>" class="flex flex-wrap justify-center">
   <%= render "form", task: @task %>
-  <%= link_to "Nevermind", tasks_path, class: "btn py-2 ml-2 bg-denim-800 hover:bg-denim-900 text-white flex justify-center" %>
+  <%= link_to "Nevermind", tasks_path, class: "btn py-2 mx-auto my-2 w-1/2 bg-denim-800 hover:bg-denim-900 text-white flex justify-center" %>
 </turbo-frame>

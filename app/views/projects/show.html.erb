@@ -1,8 +1,8 @@
 <%= turbo_frame_tag dom_id(@project) do %>
 	<div class="w-full flex justify-between items-center p-6 text-denim-900 bg-white/80 shadow-md rounded-lg m-2">
-		<div class="grid grid-cols-1 gap-4 w-full">
+		<div class="grid grid-cols-1 gap-2 w-full">
 			<p><span class="font-semibold">Name:</span> <%= @project.name %></p>
-			<p><span class="font-semibold">Description:</span> <%= @project.description %></p>
+			<p><span class="font-semibold">Description:</span> <%= @project.description.presence || "No Description Provided" %></p>
 			<p><span class="font-semibold">Created by:</span> <%= @project.creator.email %></p>
 		</div>
 		<%= link_to projects_path, class: "text-sm ml-2 bg-denim-800 hover:bg-denim-900 text-white flex justify-center text-lg px-2 py-1 rounded-lg items-center" do %>

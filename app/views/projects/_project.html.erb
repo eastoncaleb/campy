@@ -1,15 +1,15 @@
 <turbo-frame id="<%= dom_id project %>" class="flex flex-wrap justify-between items-center my-4 py-2 px-4 bg-denim-400/10 rounded-lg text-denim-900 shadow-md shadow-denim-200/50 border-b border-denim-100">
   <%= link_to project do %>
     <div class="flex flex-wrap items-center">
-      <span class="font-semibold text-denim-800 mr-5"><%= project.name %></span>
-      <span class="text-denim-800"><%= project.description.truncate(100) %></span>
+      <span class="font-semibold text-denim-800 w-full"><%= project.name %></span>
+      <span class="text-denim-800 overflow-y-auto" style="max-height: 50px;"><%= project.description %></span>
     </div>
   <% end %>
-  <div>
+  <div class="flex my-1 items-center">
     <%= link_to "Edit", edit_project_path(project),
                 class: "btn bg-denim-800 text-white hover:bg-denim-900 text-sm"
     %>
-    <div class="inline-block ml-2">
+    <div class="inline-block ml-1">
       <%= button_to "Delete", project_path(project),
                     method: :delete,
                     class: "btn bg-red-600/80 text-white hover:bg-red-600 text-sm",

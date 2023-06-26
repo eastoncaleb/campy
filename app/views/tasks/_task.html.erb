@@ -1,4 +1,4 @@
-<turbo-frame id="<%= dom_id task %>" class="flex justify-between items-center my-4 py-2 px-4 bg-denim-400/10 rounded-lg text-denim-900 shadow-md shadow-denim-200/50 border-b border-denim-100">
+<turbo-frame id="<%= dom_id task %>" class="flex flex-wrap justify-between items-center my-4 py-2 px-4 bg-denim-400/10 rounded-lg text-denim-900 shadow-md shadow-denim-200/50 border-b border-denim-100">
   <%= form_with(model: task, class:"text-lg inline-block") do |form| %>
     <%= form.check_box :completed,
                       data: {
